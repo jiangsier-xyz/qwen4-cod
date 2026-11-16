@@ -15,10 +15,6 @@ node_modules/
 # Small JSON evidence (report/perf/renderer) stays tracked.
 shots/*.png
 
-# Copyrighted reference imagery (© Activision / Infinity Ward) — local-only
-# design reference, never committed or redistributed (see REFERENCE-PACK.md).
-screenshots/
-
 # Logs
 *.log
 npm-debug.log*

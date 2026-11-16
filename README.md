@@ -73,7 +73,7 @@ and are consumed by the match.
 | `REPORT.md` | Delivery report: acceptance results, measured perf, optimization-round ledger, final per-category fidelity judgment. |
 | `docs/superpowers/plans/` | Implementation plan (all tasks complete). |
 | `game-dev-prompt.md`, `descriptions.md` | Build spec and per-image reference notes. |
-| `screenshots/` (gitignored, local only), `REFERENCE-PACK.md` | Visual reference pack provenance (see license note below). |
+| `screenshots/`, `REFERENCE-PACK.md` | Visual reference pack (© Activision, reference-only; tracked for reproducibility — see license note). |
 
 ## Development
 
@@ -95,11 +95,21 @@ A debug API is exposed in-page as `window.__game` (state, `startMatch()`, `fire(
 141 draw calls (<150 budget), ~190k tris, pixel ratio capped 1.5. Acceptance: 22/22 pass,
 zero console errors/warnings. Details and fidelity judgments in [`REPORT.md`](REPORT.md).
 
+**Replicating the generation end-to-end:** spec [`game-dev-prompt.md`](game-dev-prompt.md) +
+reference pack (`screenshots/`, [`descriptions.md`](descriptions.md)) → implementation plan
+[`docs/superpowers/plans/2026-11-16-browser-fps.md`](docs/superpowers/plans/2026-11-16-browser-fps.md)
+→ authoring sources `src/` → `node tools/build.mjs` → `node tools/test-acceptance.mjs`
+(acceptance + perf) → `node tools/fidelity-shots.mjs <prefix> <views…>` renders judged against
+`screenshots/` per spec §6 (optimization-round ledger and final per-category verdicts in
+[`REPORT.md`](REPORT.md)).
+
 ## Reference pack & originality
 
 `screenshots/` + `descriptions.md` are a **reference-only** pack of official marketing/store
 imagery (© Activision Publishing / Infinity Ward) used as a fidelity and design-grammar target.
-It is **not shipped in the artifact and not redistributed** — no Call of Duty assets, names, or
-logos appear in the game; all in-game content (title BLACKLINE, teams SPECTRE/VIPER, weapons,
-operators, signage) is original. Pack provenance and per-image notes:
+The pack is tracked in this repository so the generation and fidelity-judgment process can be
+replicated end-to-end; it is third-party copyrighted material included for reference only and
+is **never shipped in the game artifact**. No Call of Duty assets, names, or logos appear in the
+game; all in-game content (title BLACKLINE, teams SPECTRE/VIPER, weapons, operators, signage) is
+original. Pack provenance and per-image notes:
 [`REFERENCE-PACK.md`](REFERENCE-PACK.md) and [`descriptions.md`](descriptions.md).
