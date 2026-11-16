@@ -1,0 +1,116 @@
+{
+  "results": [
+    {
+      "name": "load: zero console errors",
+      "ok": true,
+      "detail": "clean"
+    },
+    {
+      "name": "load: webgl context",
+      "ok": true,
+      "detail": "ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version) / three 160"
+    },
+    {
+      "name": "menu: state",
+      "ok": true,
+      "detail": "state=menu"
+    },
+    {
+      "name": "menu: \"Powered by Qwen4\" badge legible",
+      "ok": true,
+      "detail": "{\"found\":true,\"visible\":true,\"w\":121.78125,\"h\":22}"
+    },
+    {
+      "name": "settings: live-apply",
+      "ok": true,
+      "detail": "{\"s\":1.7,\"f\":95,\"c\":\"#7CFC00\",\"q\":\"medium\",\"fovCam\":95}"
+    },
+    {
+      "name": "settings: persist across reload",
+      "ok": true,
+      "detail": "{\"s\":1.7,\"f\":95,\"c\":\"#7CFC00\",\"q\":\"medium\",\"ls\":true}"
+    },
+    {
+      "name": "loadout: attachments equipped",
+      "ok": true,
+      "detail": "{\"optic\":\"red_dot\",\"muzzle\":\"suppressor\",\"magazine\":\"ext\"}"
+    },
+    {
+      "name": "gunsmith: stat deltas rendered",
+      "ok": true,
+      "detail": "delta nodes=5"
+    },
+    {
+      "name": "loadout: persists across reload",
+      "ok": true,
+      "detail": "{\"optic\":\"red_dot\",\"muzzle\":\"suppressor\",\"magazine\":\"ext\"}"
+    },
+    {
+      "name": "match: enters match state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "match: firing decrements ammo + HUD live",
+      "ok": true,
+      "detail": "{\"before\":45,\"after\":{\"ammo\":42,\"hud\":\"42\"}}"
+    },
+    {
+      "name": "match: reload restores mag",
+      "ok": true,
+      "detail": "ammo=45"
+    },
+    {
+      "name": "match: killfeed + score update",
+      "ok": true,
+      "detail": "{\"n\":1,\"score\":[1,0],\"tag\":\"WINNING\"}"
+    },
+    {
+      "name": "match: compass responds to yaw",
+      "ok": true,
+      "detail": "90 -> 280"
+    },
+    {
+      "name": "match: minimap rendered",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "match: Tab scoreboard",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "end: match-end screen",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "end: rematch resets + restarts",
+      "ok": true,
+      "detail": "[0,0]"
+    },
+    {
+      "name": "perf: draw calls < 150",
+      "ok": true,
+      "detail": "{\"avgFps\":60.1,\"p95ms\":18.4,\"frames\":361,\"calls\":141,\"tris\":189940,\"pr\":1}"
+    },
+    {
+      "name": "perf: pixel ratio <= 1.5",
+      "ok": true,
+      "detail": "pr=1"
+    },
+    {
+      "name": "perf: 60fps target (measured)",
+      "ok": true,
+      "detail": "avgFps=60.1 p95=18.4ms (see renderer.json for GPU)"
+    },
+    {
+      "name": "final: zero console errors across run",
+      "ok": true,
+      "detail": "clean"
+    }
+  ],
+  "errors": [],
+  "warnings": []
+}

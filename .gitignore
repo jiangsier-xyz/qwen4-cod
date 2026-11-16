@@ -1,0 +1,27 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*~
+.idea/
+.vscode/
+
+# Dependencies (tooling is dependency-free, but keep future installs out)
+node_modules/
+
+# Generated verification imagery — regenerable via:
+#   node tools/test-acceptance.mjs   /   node tools/fidelity-shots.mjs <prefix> <views>
+# Small JSON evidence (report/perf/renderer) stays tracked.
+shots/*.png
+
+# Copyrighted reference imagery (© Activision / Infinity Ward) — local-only
+# design reference, never committed or redistributed (see REFERENCE-PACK.md).
+screenshots/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local Claude settings (shared project settings, if added, stay tracked)
+.claude/settings.local.json
