@@ -51,6 +51,11 @@
       "detail": ""
     },
     {
+      "name": "match: WASD moves player + grounded",
+      "ok": true,
+      "detail": "{\"moved\":3.96,\"grounded\":true}"
+    },
+    {
       "name": "match: firing decrements ammo + HUD live",
       "ok": true,
       "detail": "{\"before\":45,\"after\":{\"ammo\":42,\"hud\":\"42\"}}"
@@ -93,7 +98,7 @@
     {
       "name": "perf: draw calls < 150",
       "ok": true,
-      "detail": "{\"avgFps\":60.1,\"p95ms\":18.4,\"frames\":361,\"calls\":141,\"tris\":189940,\"pr\":1}"
+      "detail": "{\"avgFps\":60,\"p95ms\":18.3,\"frames\":361,\"calls\":146,\"tris\":201428,\"pr\":1}"
     },
     {
       "name": "perf: pixel ratio <= 1.5",
@@ -103,7 +108,7 @@
     {
       "name": "perf: 60fps target (measured)",
       "ok": true,
-      "detail": "avgFps=60.1 p95=18.4ms (see renderer.json for GPU)"
+      "detail": "avgFps=60 p95=18.3ms (see renderer.json for GPU)"
     },
     {
       "name": "final: zero console errors across run",

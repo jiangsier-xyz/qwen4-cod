@@ -141,6 +141,15 @@ await (async () => {
     const ok = await waitFor(cdp, 'window.__game.state === "match"', 15000);
     record('match: enters match state', ok);
     await sleep(1500);
+    // WASD must displace the player via real key events (regression guard: moveEntity
+    // once integrated into nonexistent flat p.x/p.y/p.z, freezing pos at spawn).
+    const p0 = await cdp.evaluate('window.__game.match.player.pos.toArray()');
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyDown', code: 'KeyW', key: 'w', windowsVirtualKeyCode: 87 });
+    await sleep(900);
+    const p1 = await cdp.evaluate('(() => { const P = window.__game.match.player; return { pos: P.pos.toArray(), grounded: P.grounded }; })()');
+    await cdp.send('Input.dispatchKeyEvent', { type: 'keyUp', code: 'KeyW', key: 'w', windowsVirtualKeyCode: 87 });
+    const moved = Math.hypot(p1.pos[0] - p0[0], p1.pos[2] - p0[2]);
+    record('match: WASD moves player + grounded', moved > 0.5 && p1.grounded === true, JSON.stringify({ moved: +moved.toFixed(2), grounded: p1.grounded }));
     const before = await cdp.evaluate('window.__game.stats().ammo');
     await cdp.evaluate('window.__game.fire(); window.__game.fire(); window.__game.fire();');
     await sleep(400);

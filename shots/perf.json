@@ -1,8 +1,8 @@
 {
-  "avgFps": 60.1,
-  "p95ms": 18.4,
+  "avgFps": 60,
+  "p95ms": 18.3,
   "frames": 361,
-  "calls": 141,
-  "tris": 189940,
+  "calls": 146,
+  "tris": 201428,
   "pr": 1
 }

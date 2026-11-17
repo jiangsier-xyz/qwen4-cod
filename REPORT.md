@@ -11,7 +11,7 @@ Controls: pointer-lock mouse look · WASD · Shift sprint · C slide · RMB ADS 
 
 ## 1. Acceptance (final build, measured)
 
-**22/22 PASS · zero console errors · zero warnings** across the whole run.
+**23/23 PASS · zero console errors · zero warnings** across the whole run.
 
 | Group | Result |
 |---|---|
@@ -20,13 +20,14 @@ Controls: pointer-lock mouse look · WASD · Shift sprint · C slide · RMB ADS 
 | Settings live-apply + persist across reload | PASS — sens 1.7, fov 95 (camera verified), crosshair #7CFC00, quality medium |
 | Loadout attachments equip + persist; gunsmith stat deltas | PASS — red_dot / suppressor / ext; 5 delta nodes |
 | Match: enter, fire→ammo+HUD live, reload, killfeed+score+WINNING tag, compass yaw, minimap, Tab scoreboard | PASS — 45→42→45; score [1,0]; bearing 90→280 |
+| Match: WASD moves player + grounded (real CDP key events) | PASS — walk 3.4 m / sprint 5.7 m per 0.8 s; regression guard for the moveEntity flat-property bug |
 | End screen + rematch reset | PASS — [0,0] on rematch |
 | Perf: draw calls <150, pixel ratio ≤1.5, 60 fps target | PASS — see below |
 
 ## 2. Performance (measured in match, 8 bots live, 1920×1080, 6 s rAF sample)
 
-- **avg 60.1 fps · p95 frame 18.4 ms** (361 frames)
-- **141 draw calls** (<150 budget) · ~190 k triangles/frame · pixel ratio 1.0 (cap 1.5)
+- **avg 60 fps · p95 frame 18.3 ms** (361 frames)
+- **146 draw calls** (<150 budget) · ~201 k triangles/frame · pixel ratio 1.0 (cap 1.5)
 - One shadow cascade (2048 PCFSoft on high, 1024 on medium/low); merged statics per material,
   instanced FX/particles; post pass = single fullscreen quad (grade + DOF + grain).
 - Quality presets scale pixel ratio (1.0/0.8/0.62), shadow size, particle density.

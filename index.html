@@ -3294,26 +3294,27 @@ const Match = {
   // ---------------- shared capsule physics ----------------
   moveEntity(p, dx, dz, dy, r, h) {
     const cols = World.colliders;
-    const overlap = (c) => p.x + r > c.min.x && p.x - r < c.max.x && p.z + r > c.min.z && p.z - r < c.max.z && p.y < c.max.y - 0.02 && p.y + h > c.min.y + 0.02;
-    p.x += dx;
+    const P = p.pos;   // entities store position in pos (Vector3), not flat x/y/z
+    const overlap = (c) => P.x + r > c.min.x && P.x - r < c.max.x && P.z + r > c.min.z && P.z - r < c.max.z && P.y < c.max.y - 0.02 && P.y + h > c.min.y + 0.02;
+    P.x += dx;
     for (const c of cols) {
       if (!overlap(c)) continue;
-      if (p.grounded && c.max.y - p.y <= 0.46 && c.max.y > p.y) { p.y = c.max.y; continue; }
-      p.x = dx > 0 ? c.min.x - r : c.max.x + r;
+      if (p.grounded && c.max.y - P.y <= 0.46 && c.max.y > P.y) { P.y = c.max.y; continue; }
+      P.x = dx > 0 ? c.min.x - r : c.max.x + r;
     }
-    p.z += dz;
+    P.z += dz;
     for (const c of cols) {
       if (!overlap(c)) continue;
-      if (p.grounded && c.max.y - p.y <= 0.46 && c.max.y > p.y) { p.y = c.max.y; continue; }
-      p.z = dz > 0 ? c.min.z - r : c.max.z + r;
+      if (p.grounded && c.max.y - P.y <= 0.46 && c.max.y > P.y) { P.y = c.max.y; continue; }
+      P.z = dz > 0 ? c.min.z - r : c.max.z + r;
     }
-    p.y += dy;
+    P.y += dy;
     p.grounded = false;
-    const gy = World.surfaceY(p.x, p.z, p.y + 0.5);
-    if (p.y <= gy + 0.001 && dy <= 0) { p.y = gy; p.grounded = true; p.vel.y = 0; }
-    if (p.y < -2) { p.y = 0; p.vel.y = 0; }
+    const gy = World.surfaceY(P.x, P.z, P.y + 0.5);
+    if (P.y <= gy + 0.001 && dy <= 0) { P.y = gy; p.grounded = true; p.vel.y = 0; }
+    if (P.y < -2) { P.y = 0; p.vel.y = 0; }
     // world bounds
-    p.x = Math.max(-44.5, Math.min(44.5, p.x)); p.z = Math.max(-29.5, Math.min(29.5, p.z));
+    P.x = Math.max(-44.5, Math.min(44.5, P.x)); P.z = Math.max(-29.5, Math.min(29.5, P.z));
   },
 
   // ---------------- hitscan ----------------

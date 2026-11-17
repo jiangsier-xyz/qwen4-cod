@@ -91,9 +91,10 @@ Env overrides: `PORT` (server), `GAME_URL` (harness/shots target), `CDP_BASE` (C
 A debug API is exposed in-page as `window.__game` (state, `startMatch()`, `fire()`,
 `debugView()`, `stats()`, …) for automation and inspection.
 
-**Measured performance** (1920×1080, 8 bots live): 60.1 fps avg, p95 frame 18.4 ms,
-141 draw calls (<150 budget), ~190k tris, pixel ratio capped 1.5. Acceptance: 22/22 pass,
-zero console errors/warnings. Details and fidelity judgments in [`REPORT.md`](REPORT.md).
+**Measured performance** (1920×1080, 8 bots live): 60 fps avg, p95 frame 18.3 ms,
+146 draw calls (<150 budget), ~201k tris, pixel ratio capped 1.5. Acceptance: 23/23 pass
+(incl. a real-key-event WASD movement regression test), zero console errors/warnings.
+Details and fidelity judgments in [`REPORT.md`](REPORT.md).
 
 **Replicating the generation end-to-end:** spec [`game-dev-prompt.md`](game-dev-prompt.md) +
 reference pack (`screenshots/`, [`descriptions.md`](descriptions.md)) → implementation plan
